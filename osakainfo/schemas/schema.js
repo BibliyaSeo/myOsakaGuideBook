@@ -9,7 +9,6 @@ import reservation from './reservation';
 import region from './region';
 import category from './category';
 import pay from './pay';
-import planofdays from './planofdays';
 
 export default createSchema({
   name: 'default',
@@ -22,7 +21,6 @@ export default createSchema({
     restaurant,
     plan,
     pay,
-    planofdays,
     reservation,
   ]),
 });

@@ -8,7 +8,7 @@ export default function IntroScreen() {
   return (
     <SafeAreaView>
       <TouchableOpacity onPress={() => navigation.navigate('Tab')}>
-        <Text>Go</Text>
+        <Text>여행 시작하기</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

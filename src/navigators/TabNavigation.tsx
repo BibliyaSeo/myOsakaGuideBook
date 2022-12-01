@@ -6,23 +6,72 @@ import PlanScreen from '../screens/PlanScreen';
 import ReservationScreen from '../screens/ReservationScreen';
 import InfoScreen from '../screens/InfoScreen';
 import PayScreen from '../screens/PayScreen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
+  // const mainColor = '#98ceea';
+  const mainColor = '#07337c';
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({route}) => ({
         headerShown: false,
-      }}>
-      <Tab.Screen
-        name="TouristDestination"
-        component={TouristDestinationScreen}
-      />
-      <Tab.Screen name="Plan" component={PlanScreen} />
-      <Tab.Screen name="Reservation" component={ReservationScreen} />
-      <Tab.Screen name="Pay" component={PayScreen} />
-      <Tab.Screen name="Info" component={InfoScreen} />
+        tabBarActiveTintColor: mainColor,
+        tabBarInactiveTintColor: 'gray',
+        tabBarIcon: ({focused, color, size}) => {
+          if (route.name === '관광명소') {
+            return (
+              <Ionicons
+                name={'gift'}
+                size={20}
+                color={focused ? mainColor : 'gray'}
+              />
+            );
+          }
+          if (route.name === '일정') {
+            return (
+              <Ionicons
+                name={'ios-airplane'}
+                size={20}
+                color={focused ? mainColor : 'gray'}
+              />
+            );
+          }
+          if (route.name === '예약') {
+            return (
+              <Ionicons
+                name={'bookmarks'}
+                size={20}
+                color={focused ? mainColor : 'gray'}
+              />
+            );
+          }
+          if (route.name === '가계부') {
+            return (
+              <Ionicons
+                name={'journal'}
+                size={20}
+                color={focused ? mainColor : 'gray'}
+              />
+            );
+          }
+          if (route.name === '정보') {
+            return (
+              <Ionicons
+                name={'information-circle-sharp'}
+                size={20}
+                color={focused ? mainColor : 'gray'}
+              />
+            );
+          }
+        },
+      })}>
+      <Tab.Screen name="관광명소" component={TouristDestinationScreen} />
+      <Tab.Screen name="일정" component={PlanScreen} />
+      <Tab.Screen name="예약" component={ReservationScreen} />
+      <Tab.Screen name="가계부" component={PayScreen} />
+      <Tab.Screen name="정보" component={InfoScreen} />
     </Tab.Navigator>
   );
 }

@@ -1,10 +1,10 @@
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 
 export default function PayScreen() {
   return (
-    <View>
+    <SafeAreaView>
       <Text>PayScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 }

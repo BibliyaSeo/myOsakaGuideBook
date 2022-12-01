@@ -1,10 +1,10 @@
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 
 export default function InfoScreen() {
   return (
-    <View>
+    <SafeAreaView>
       <Text>패스 정보</Text>
-    </View>
+    </SafeAreaView>
   );
 }
