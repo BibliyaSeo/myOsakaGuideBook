@@ -4,6 +4,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TouristDestinationScreen from '../screens/TouristDestinationScreen';
 import PlanScreen from '../screens/PlanScreen';
 import ReservationScreen from '../screens/ReservationScreen';
+import InfoScreen from '../screens/InfoScreen';
+import PayScreen from '../screens/PayScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +21,8 @@ export default function TabNavigation() {
       />
       <Tab.Screen name="Plan" component={PlanScreen} />
       <Tab.Screen name="Reservation" component={ReservationScreen} />
+      <Tab.Screen name="Pay" component={PayScreen} />
+      <Tab.Screen name="Info" component={InfoScreen} />
     </Tab.Navigator>
   );
 }
