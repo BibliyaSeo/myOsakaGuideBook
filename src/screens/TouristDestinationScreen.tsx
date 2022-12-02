@@ -14,13 +14,14 @@ import {
   NOTION_RESTAURANT_DATABASE_ID,
 } from '@env';
 import RestaurantCard from '../components/RestaurantCard';
+import MainTitle from '../components/MainTitle';
 
 export default function TouristDestinationScreen() {
   const [destinationList, setDestinationList] = useState([]);
   const [restaurantList, setRestaurantList] = useState([]);
 
   useEffect(() => {
-    const body = {
+    const nameSort = {
       sorts: [
         {
           property: 'name',
@@ -28,52 +29,71 @@ export default function TouristDestinationScreen() {
         },
       ],
     };
+
+    const daySort = {
+      sorts: [
+        {
+          property: 'day',
+          direction: 'ascending',
+        },
+      ],
+    };
+
     const getOsakaDestination = api.post(
       `/${NOTION_DESTINATION_DATABASE_ID}/query`,
-      body,
+      daySort,
     );
 
     const getOsakaRestaurant = api.post(
       `/${NOTION_RESTAURANT_DATABASE_ID}/query`,
-      body,
+      nameSort,
     );
 
     const listArr = [getOsakaDestination, getOsakaRestaurant];
     Promise.all(listArr).then(res => {
+      console.log(res[0]);
       setDestinationList(res[0].data.results);
       setRestaurantList(res[1].data.results);
     });
   }, []);
 
   useEffect(() => {
-    console.log('destinationList : ', destinationList);
-    console.log('restaurantList: ', restaurantList);
-  }, [destinationList, restaurantList]);
+    destinationList.map((item: any) =>
+      console.log('destinationList : ', item.properties.worktime),
+    );
+    // console.log('restaurantList: ', restaurantList);
+  }, [destinationList]);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <View className="px-5 py-3 bg-sky-300">
-        <Text className="text-xl font-extrabold">OSAKA</Text>
-      </View>
+      <MainTitle title={'OSAKA GUIDEBOOK'} />
       <ScrollView>
         <View className="px-5 py-2">
-          <Text className="text-extrabold text-lg">관광명소</Text>
+          <Text className="font-bold text-xl mb-2">관광명소</Text>
           {/* 관광카드영역 */}
           <ScrollView
             horizontal
             contentContainerStyle={{paddingHorizontal: 15}}
-            showsHorizontalScrollIndicator={false}
-            className="pt-4">
+            showsHorizontalScrollIndicator={false}>
             {destinationList.map((item: any) => (
               <DestinationCard
                 key={item.id}
+                id={item.id}
                 name={item.properties.name?.title[0]?.plain_text}
+                image={item.properties.image.rich_text[0].plain_text}
+                description={
+                  item.properties.description.rich_text[0].plain_text
+                }
+                region={item.properties.region.select.name}
+                day={item.properties.day.select.name}
+                pass={item.properties.pass.select.name}
+                // worktime={item.properties.worktime}
               />
             ))}
           </ScrollView>
         </View>
         <View className="px-5 py-2">
-          <Text className="text-extrabold text-lg">식당</Text>
+          <Text className="font-bold text-xl">식당</Text>
           {/* 식당카드영역 */}
           {restaurantList.map((item: any) => (
             <RestaurantCard

@@ -7,12 +7,11 @@ import ReservationScreen from '../screens/ReservationScreen';
 import InfoScreen from '../screens/InfoScreen';
 import PayScreen from '../screens/PayScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {mainColor} from '../utils/colors';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
-  // const mainColor = '#98ceea';
-  const mainColor = '#07337c';
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
