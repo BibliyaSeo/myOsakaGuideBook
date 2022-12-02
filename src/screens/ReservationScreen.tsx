@@ -1,5 +1,6 @@
 import {View, Text, SafeAreaView} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {api} from '../api';
 
 export default function ReservationScreen() {
   return (
