@@ -12,6 +12,7 @@ export interface IDestinationCard {
   pass: string;
   worktime: string;
   memo: string;
+  googleMap: string;
 }
 
 export default function destinationCard({
@@ -24,6 +25,7 @@ export default function destinationCard({
   pass,
   worktime,
   memo,
+  googleMap,
 }: IDestinationCard) {
   const navigation = useNavigation();
 
@@ -41,6 +43,7 @@ export default function destinationCard({
           pass,
           worktime,
           memo,
+          googleMap,
         })
       }>
       <Image source={{uri: `${image}`}} className="h-48 w-64 rounded-t-lg" />

@@ -59,7 +59,7 @@ export default function TouristDestinationScreen() {
 
   useEffect(() => {
     destinationList.map((item: any) =>
-      console.log('destinationList : ', item.properties.worktime),
+      console.log('destinationList : ', item.properties.googleMap.url),
     );
     // console.log('restaurantList: ', restaurantList);
   }, [destinationList]);
@@ -87,7 +87,9 @@ export default function TouristDestinationScreen() {
                 region={item.properties.region.select.name}
                 day={item.properties.day.select.name}
                 pass={item.properties.pass.select.name}
-                // worktime={item.properties.worktime}
+                worktime={item.properties.worktime.rich_text[0].plain_text}
+                memo={item.properties.memo.rich_text[0]?.plain_text}
+                googleMap={item.properties.googleMap.url}
               />
             ))}
           </ScrollView>
