@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {IDestinationCard} from '../components/DestinationCard';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useBottomBarHeight} from '../hooks/useBottomBarHeight';
 
