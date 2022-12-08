@@ -51,4 +51,32 @@ export const destinationImages = [
     name: 'gojabune',
     require: require('../assets/destinations/gojabune.jpg'),
   },
+  {
+    name: 'chtenkaku',
+    require: require('../assets/destinations/chtenkaku.jpg'),
+  },
+  {
+    name: 'chtenkakuslider',
+    require: require('../assets/destinations/chtenkakuslider.jpg'),
+  },
+  {
+    name: 'dendentown',
+    require: require('../assets/destinations/dendentown.jpg'),
+  },
+  {
+    name: 'tenjinbashi',
+    require: require('../assets/destinations/tenjinbashi.jpg'),
+  },
+  {
+    name: 'kyoto',
+    require: require('../assets/destinations/kyoto.jpg'),
+  },
+  {
+    name: 'kiyomizdera',
+    require: require('../assets/destinations/kiyomizdera.jpg'),
+  },
+  {
+    name: 'nakajakicho',
+    require: require('../assets/destinations/nakajakicho.jpg'),
+  },
 ];
