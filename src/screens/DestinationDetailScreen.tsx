@@ -76,7 +76,7 @@ export default function DestinationDetailScreen() {
   });
 
   return (
-    <SafeAreaView className={`pb-[${bottomBarHeight}px]`}>
+    <SafeAreaView className={`flex-1 bg-white pb-[${bottomBarHeight}px]`}>
       <View className="flex-row justify-between items-center py-1 px-2">
         <View>
           <Ionicons name={'close'} size={40} color={'transparent'} />

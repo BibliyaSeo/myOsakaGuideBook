@@ -21,7 +21,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 export default function TouristDestinationScreen() {
   const dispatch = useDispatch();
-  const [destinationList, setDestinationList] = useState([]);
+  // const [destinationList, setDestinationList] = useState([]);
   const [restaurantList, setRestaurantList] = useState([]);
   const destinationData = useSelector(
     (state: RootState) => state.destination.destinationData,
@@ -46,25 +46,29 @@ export default function TouristDestinationScreen() {
       ],
     };
 
-    const getOsakaDestination = api.post(
-      `/${NOTION_DESTINATION_DATABASE_ID}/query`,
-      daySort,
-    );
-
-    const getOsakaRestaurant = api.post(
-      `/${NOTION_RESTAURANT_DATABASE_ID}/query`,
-      nameSort,
-    );
-
-    const listArr = [getOsakaDestination, getOsakaRestaurant];
-    Promise.all(listArr).then(res => {
-      const properties = res[0].data.results.map(
-        (item: any) => item.properties,
+    const getMainData = async () => {
+      const getOsakaDestination = api.post(
+        `/${NOTION_DESTINATION_DATABASE_ID}/query`,
+        daySort,
       );
-      setDestinationList(res[0].data.results);
-      dispatch(setDestinationData(properties));
-      setRestaurantList(res[1].data.results);
-    });
+
+      const getOsakaRestaurant = api.post(
+        `/${NOTION_RESTAURANT_DATABASE_ID}/query`,
+        nameSort,
+      );
+
+      const listArr = [getOsakaDestination, getOsakaRestaurant];
+
+      await Promise.all(listArr).then(res => {
+        const properties = res[0].data.results.map(
+          (item: any) => item.properties,
+        );
+        // setDestinationList(res[0].data.results);
+        dispatch(setDestinationData(properties));
+        setRestaurantList(res[1].data.results);
+      });
+    };
+    getMainData();
   }, []);
 
   return (

@@ -21,5 +21,7 @@ export const regionColors = (region: string) => {
     ? 'bg-sky-200'
     : region === '교토'
     ? 'bg-yellow-200'
+    : region === '유니버셜 스튜디오'
+    ? 'bg-green-200'
     : 'bg-white';
 };

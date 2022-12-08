@@ -39,20 +39,10 @@ export default function destinationCard({
 
   return (
     <TouchableOpacity
-      className="bg-white shadow mr-3 rounded-lg"
+      className="mr-3 rounded-lg shadow bg-white"
       onPress={() =>
         navigation.navigate('DestinationDetail', {
           id,
-          // name,
-          // image,
-          // description,
-          // region,
-          // day,
-          // dayColor,
-          // pass,
-          // worktime,
-          // memo,
-          // googleMap,
         })
       }>
       <Image source={names?.require} className="h-48 w-64 rounded-t-lg" />
