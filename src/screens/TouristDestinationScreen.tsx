@@ -15,10 +15,17 @@ import {
 } from '@env';
 import RestaurantCard from '../components/RestaurantCard';
 import MainTitle from '../components/MainTitle';
+import {setDestinationData} from '../redux/slices/destinationSlice';
+import {RootState} from '../redux/store';
+import {useDispatch, useSelector} from 'react-redux';
 
 export default function TouristDestinationScreen() {
+  const dispatch = useDispatch();
   const [destinationList, setDestinationList] = useState([]);
   const [restaurantList, setRestaurantList] = useState([]);
+  const destinationData = useSelector(
+    (state: RootState) => state.destination.destinationData,
+  );
 
   useEffect(() => {
     const nameSort = {
@@ -51,18 +58,14 @@ export default function TouristDestinationScreen() {
 
     const listArr = [getOsakaDestination, getOsakaRestaurant];
     Promise.all(listArr).then(res => {
-      console.log(res[0]);
+      const properties = res[0].data.results.map(
+        (item: any) => item.properties,
+      );
       setDestinationList(res[0].data.results);
+      dispatch(setDestinationData(properties));
       setRestaurantList(res[1].data.results);
     });
   }, []);
-
-  useEffect(() => {
-    destinationList.map((item: any) =>
-      console.log('destinationList : ', item.properties.googleMap.url),
-    );
-    // console.log('restaurantList: ', restaurantList);
-  }, [destinationList]);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -75,21 +78,21 @@ export default function TouristDestinationScreen() {
             horizontal
             contentContainerStyle={{paddingHorizontal: 15}}
             showsHorizontalScrollIndicator={false}>
-            {destinationList.map((item: any) => (
+            {/* {destinationList.map((item: any) => ( */}
+            {destinationData.map((item: any, index: number) => (
               <DestinationCard
-                key={item.id}
-                id={item.id}
-                name={item.properties.name?.title[0]?.plain_text}
-                image={item.properties.image.rich_text[0].plain_text}
-                description={
-                  item.properties.description.rich_text[0].plain_text
-                }
-                region={item.properties.region.select.name}
-                day={item.properties.day.select.name}
-                pass={item.properties.pass.select.name}
-                worktime={item.properties.worktime.rich_text[0].plain_text}
-                memo={item.properties.memo.rich_text[0]?.plain_text}
-                googleMap={item.properties.googleMap.url}
+                key={`${index}_destination`}
+                id={`${index}`}
+                name={item.name?.title[0]?.plain_text}
+                image={item.image?.rich_text[0]?.plain_text}
+                description={item.description.rich_text[0]?.plain_text}
+                region={item.region.select?.name}
+                day={item.day.select?.name}
+                dayColor={item.day.select?.color}
+                pass={item.pass.select?.name}
+                worktime={item.worktime.rich_text[0]?.plain_text}
+                memo={item.memo.rich_text[0]?.plain_text}
+                googleMap={item.googleMap?.url}
               />
             ))}
           </ScrollView>

@@ -1,6 +1,8 @@
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {destinationImages} from '../utils/destinationImages';
+import {dayColors, regionColors} from '../utils/colors';
 
 export interface IDestinationCard {
   id: string;
@@ -9,6 +11,7 @@ export interface IDestinationCard {
   description: string;
   region: string;
   day: string;
+  dayColor: string;
   pass: string;
   worktime: string;
   memo: string;
@@ -22,6 +25,7 @@ export default function destinationCard({
   description,
   region,
   day,
+  dayColor,
   pass,
   worktime,
   memo,
@@ -29,40 +33,43 @@ export default function destinationCard({
 }: IDestinationCard) {
   const navigation = useNavigation();
 
+  const names = destinationImages.find((item: any) => {
+    return item.name === image;
+  });
+
   return (
     <TouchableOpacity
       className="bg-white shadow mr-3 rounded-lg"
       onPress={() =>
         navigation.navigate('DestinationDetail', {
           id,
-          name,
-          image,
-          description,
-          region,
-          day,
-          pass,
-          worktime,
-          memo,
-          googleMap,
+          // name,
+          // image,
+          // description,
+          // region,
+          // day,
+          // dayColor,
+          // pass,
+          // worktime,
+          // memo,
+          // googleMap,
         })
       }>
-      <Image source={{uri: `${image}`}} className="h-48 w-64 rounded-t-lg" />
+      <Image source={names?.require} className="h-48 w-64 rounded-t-lg" />
+
       <View>
         <Text className="py-1 px-2 text-lg font-bold">{name}</Text>
         <View className="flex-row">
           <View
-            className={`px-2 py-1.5 mb-2 ml-2 ${
-              region === '오사카'
-                ? 'bg-red-200'
-                : region === '고베'
-                ? 'bg-sky-200'
-                : region === '교토'
-                ? 'bg-yellow-200'
-                : 'bg-white'
-            } rounded-md w-14 flex-row justify-center`}>
+            className={`px-2 py-1.5 mb-2 ml-2 ${regionColors(
+              region,
+            )} rounded-md w-14 flex-row justify-center`}>
             <Text>{region}</Text>
           </View>
-          <View className="px-2 py-1.5 mb-2 mx-2 bg-green-200 rounded-md w-14 flex-row justify-center">
+          <View
+            className={`px-2 py-1.5 mb-2 mx-2 rounded-md w-14 flex-row justify-center ${dayColors(
+              dayColor,
+            )} `}>
             <Text>{day}</Text>
           </View>
         </View>

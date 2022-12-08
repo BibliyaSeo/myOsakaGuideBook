@@ -16,10 +16,11 @@ export default function PayScreen() {
 
     const getOsakaPay = async () => {
       try {
-        const res = api.post(`/${NOTION_PAY_DATABASE_ID}/query`, daySort);
-        console.log(res);
+        const res = await api.post(`/${NOTION_PAY_DATABASE_ID}/query`);
+        // console.log(res.data.results);
       } catch (error) {}
     };
+    getOsakaPay();
   }, []);
 
   return (
