@@ -115,7 +115,7 @@ export default function DestinationDetailScreen() {
             <View
               className={`px-2 py-1.5 mb-2 rounded-md w-14 
               flex-row justify-center ${dayColors(
-                eachDestination?.day?.select?.color,
+                eachDestination?.day?.select?.name,
               )}`}>
               <Text>{eachDestination?.day?.select?.name}</Text>
             </View>

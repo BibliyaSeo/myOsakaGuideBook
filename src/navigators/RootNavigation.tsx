@@ -5,6 +5,7 @@ import IntroScreen from '../screens/IntroScreen';
 import TabNavigation from './TabNavigation';
 import RestaurantDetailScreen from '../screens/RestaurantDetailScreen';
 import DestinationDetailScreen from '../screens/DestinationDetailScreen';
+import ReservationDetailScreen from '../screens/ReservationDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,14 @@ export default function RootNavigation() {
       <Stack.Screen
         name="RestaurantDetail"
         component={RestaurantDetailScreen}
+        options={{
+          presentation: 'fullScreenModal',
+        }}
+      />
+
+      <Stack.Screen
+        name="ReservationDetail"
+        component={ReservationDetailScreen}
         options={{
           presentation: 'modal',
         }}

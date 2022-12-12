@@ -79,4 +79,24 @@ export const destinationImages = [
     name: 'nakajakicho',
     require: require('../assets/destinations/nakajakicho.jpg'),
   },
+  {
+    name: 'sannenjaka',
+    require: require('../assets/destinations/sannenjaka.jpg'),
+  },
+  {
+    name: 'kionsijo',
+    require: require('../assets/destinations/kionsijo.jpg'),
+  },
+  {
+    name: 'yasakasinsa',
+    require: require('../assets/destinations/yasakasinsa.jpg'),
+  },
+  {
+    name: 'hanamicozi',
+    require: require('../assets/destinations/hanamicozi.jpg'),
+  },
+  {
+    name: 'heyansingoong',
+    require: require('../assets/destinations/heyansingoong.jpg'),
+  },
 ];

@@ -11,7 +11,6 @@ export interface IDestinationCard {
   description: string;
   region: string;
   day: string;
-  dayColor: string;
   pass: string;
   worktime: string;
   memo: string;
@@ -25,7 +24,6 @@ export default function destinationCard({
   description,
   region,
   day,
-  dayColor,
   pass,
   worktime,
   memo,
@@ -58,7 +56,7 @@ export default function destinationCard({
           </View>
           <View
             className={`px-2 py-1.5 mb-2 mx-2 rounded-md w-14 flex-row justify-center ${dayColors(
-              dayColor,
+              day,
             )} `}>
             <Text>{day}</Text>
           </View>

@@ -20,7 +20,7 @@ export default function PlanScreen() {
   useEffect(() => {
     const getOsakaPlan = async () => {
       const res = await api.post(`/${NOTION_PLAN_DATABASE_ID}/query`, daySort);
-      setPlanData(res.data.results);
+      setPlanData(res.data?.results);
     };
     getOsakaPlan();
   }, []);
@@ -36,7 +36,6 @@ export default function PlanScreen() {
               key={item.id}
               date={item.properties.date.date.start}
               title={item.properties.title.title[0].plain_text}
-              color={item.properties.day.select.color}
               day={item.properties.day.select.name}
               memo={item.properties.memo.rich_text[0].plain_text}
             />

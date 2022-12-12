@@ -92,7 +92,6 @@ export default function TouristDestinationScreen() {
                 description={item.description.rich_text[0]?.plain_text}
                 region={item.region.select?.name}
                 day={item.day.select?.name}
-                dayColor={item.day.select?.color}
                 pass={item.pass.select?.name}
                 worktime={item.worktime.rich_text[0]?.plain_text}
                 memo={item.memo.rich_text[0]?.plain_text}
@@ -102,14 +101,19 @@ export default function TouristDestinationScreen() {
           </ScrollView>
         </View>
         <View className="px-5 py-2">
-          <Text className="font-bold text-xl">식당</Text>
+          <Text className="font-bold text-xl mb-2">식당</Text>
           {/* 식당카드영역 */}
-          {restaurantList.map((item: any) => (
-            <RestaurantCard
-              key={item.id}
-              name={item.properties.name.title[0].plain_text}
-            />
-          ))}
+          <ScrollView
+            horizontal
+            contentContainerStyle={{paddingHorizontal: 15}}
+            showsHorizontalScrollIndicator={false}>
+            {restaurantList.map((item: any) => (
+              <RestaurantCard
+                key={item.id}
+                name={item.properties.name.title[0].plain_text}
+              />
+            ))}
+          </ScrollView>
         </View>
       </ScrollView>
     </SafeAreaView>

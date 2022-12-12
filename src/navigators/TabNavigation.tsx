@@ -70,7 +70,7 @@ export default function TabNavigation() {
       <Tab.Screen name="일정" component={PlanScreen} />
       <Tab.Screen name="예약" component={ReservationScreen} />
       <Tab.Screen name="가계부" component={PayScreen} />
-      <Tab.Screen name="정보" component={InfoScreen} />
+      {/* <Tab.Screen name="정보" component={InfoScreen} /> */}
     </Tab.Navigator>
   );
 }
