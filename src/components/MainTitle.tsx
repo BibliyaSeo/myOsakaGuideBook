@@ -7,7 +7,7 @@ interface IMainTitle {
 
 export default function MainTitle({title}: IMainTitle) {
   return (
-    <View className="px-5 py-3">
+    <View className="px-5 py-3 bg-white">
       <Text className="text-2xl font-extrabold">{title}</Text>
     </View>
   );

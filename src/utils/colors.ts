@@ -12,8 +12,8 @@ export const dayColors = (day: string) => {
     : day === 'Day 4'
     ? 'bg-orange-200'
     : day === 'Day 6'
-    ? 'bg-gray-200'
-    : 'bg-pink-200';
+    ? 'bg-pink-200'
+    : 'bg-gray-200';
 };
 
 export const typeColors = (type: string) => {

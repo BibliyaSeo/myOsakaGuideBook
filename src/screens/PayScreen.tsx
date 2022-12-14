@@ -62,10 +62,10 @@ export default function PayScreen() {
         }, 0),
       );
     }
-  }, []);
+  }, [subTotal.length]);
 
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <SafeAreaView className="flex-1 bg-white">
       <MainTitle title="OSAKA PAY" />
       <ScrollView>
         <View className="px-5 py-2">
@@ -82,7 +82,7 @@ export default function PayScreen() {
               yen={item.properties.yen.number}
             />
           ))}
-          <View className="flex-row justify-between p-4 border-y border-gray-300 mb-2">
+          <View className="flex-row justify-between p-4 border-y border-gray-300 my-2">
             <View className="flex justify-center items-center">
               <Text>사용 원화</Text>
               <Text className="text-[16px]">

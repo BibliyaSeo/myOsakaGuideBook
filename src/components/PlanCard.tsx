@@ -11,13 +11,14 @@ interface PlanCardProps {
 
 export default function PlanCard({date, title, day, memo}: PlanCardProps) {
   return (
-    <View className="p-4 mb-4 shadow rounded-lg bg-white w-full">
+    <View className="p-4 mb-4 bg-white w-full">
       <View>
         <Text className="font-bold text-lg">
-          <Text className={`${dayColors(day)}`}>{day}</Text> /
-          <Text> {title}</Text>
+          <Text className={`${dayColors(day)}`}>{day}</Text> / {title}
         </Text>
-        <Text className="text-gray-500 text-xs mt-1">{date}</Text>
+      </View>
+      <View>
+        <Text className="text-gray-500 text-sm mt-2">{date}</Text>
       </View>
       <View className="mt-2">
         <Text>{memo}</Text>

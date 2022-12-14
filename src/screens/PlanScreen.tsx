@@ -26,7 +26,7 @@ export default function PlanScreen() {
   }, []);
 
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <SafeAreaView className="flex-1 bg-white">
       <MainTitle title="OSAKA PLAN" />
       <ScrollView>
         <View className="px-5 py-2">

@@ -11,7 +11,7 @@ export default function RestaurantCard({name}: IRestaurantCardProps) {
 
   return (
     <TouchableOpacity
-      className="mr-3 rounded-lg shadow bg-white"
+      className="mr-3 rounded-lg bg-white"
       onPress={() =>
         navigation.navigate('RestaurantDetail', {
           // id,
@@ -19,7 +19,7 @@ export default function RestaurantCard({name}: IRestaurantCardProps) {
       }>
       <Image className="h-48 w-64 rounded-t-lg" />
 
-      <View>
+      <View className="py-2">
         <Text className="py-1 px-2 text-lg font-bold">{name}</Text>
         {/* <View className="flex-row"> */}
         {/* <View

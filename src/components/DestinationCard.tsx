@@ -37,7 +37,7 @@ export default function destinationCard({
 
   return (
     <TouchableOpacity
-      className="mr-3 rounded-lg shadow bg-white"
+      className="mr-3 rounded-lg bg-white"
       onPress={() =>
         navigation.navigate('DestinationDetail', {
           id,
@@ -45,7 +45,7 @@ export default function destinationCard({
       }>
       <Image source={names?.require} className="h-48 w-64 rounded-t-lg" />
 
-      <View>
+      <View className="py-2">
         <Text className="py-1 px-2 text-lg font-bold">{name}</Text>
         <View className="flex-row">
           <View

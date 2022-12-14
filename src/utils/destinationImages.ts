@@ -99,4 +99,84 @@ export const destinationImages = [
     name: 'heyansingoong',
     require: require('../assets/destinations/heyansingoong.jpg'),
   },
+  {
+    name: 'philosophy',
+    require: require('../assets/destinations/philosophy.jpg'),
+  },
+  {
+    name: 'silver',
+    require: require('../assets/destinations/silver.jpg'),
+  },
+  {
+    name: 'honenin',
+    require: require('../assets/destinations/honenin.jpg'),
+  },
+  {
+    name: 'karasma',
+    require: require('../assets/destinations/karasma.jpg'),
+  },
+  {
+    name: 'nizo',
+    require: require('../assets/destinations/nizo.jpg'),
+  },
+  {
+    name: 'gold',
+    require: require('../assets/destinations/gold.jpg'),
+  },
+  {
+    name: 'husimiinari',
+    require: require('../assets/destinations/husimiinari.jpg'),
+  },
+  {
+    name: 'arasiyama',
+    require: require('../assets/destinations/arasiyama.jpg'),
+  },
+  {
+    name: 'kobe',
+    require: require('../assets/destinations/kobe.jpg'),
+  },
+  {
+    name: 'sannomiya',
+    require: require('../assets/destinations/sannomiya.jpg'),
+  },
+  {
+    name: 'kitanoijinkan',
+    require: require('../assets/destinations/kitanoijinkan.jpg'),
+  },
+  {
+    name: 'kitanoijinkanstarbucks',
+    require: require('../assets/destinations/kitanoijinkanstarbucks.jpg'),
+  },
+  {
+    name: 'nankinmachi',
+    require: require('../assets/destinations/nankinmachi.jpg'),
+  },
+  {
+    name: 'merikenpark',
+    require: require('../assets/destinations/merikenpark.jpg'),
+  },
+  {
+    name: 'harborland',
+    require: require('../assets/destinations/harborland.jpg'),
+  },
+  {
+    name: 'loopbus',
+    require: require('../assets/destinations/loopbus.jpg'),
+  },
+  {
+    name: 'kikumasamune',
+    require: require('../assets/destinations/kikumasamune.jpg'),
+  },
+  {
+    name: 'arimaonsen',
+    require: require('../assets/destinations/arimaonsen.jpg'),
+  },
+  {
+    name: 'lotko',
+    require: require('../assets/destinations/lotko.jpg'),
+  },
+  {
+    name: 'himeji',
+    require: require('../assets/destinations/himeji.jpg'),
+  },
 ];

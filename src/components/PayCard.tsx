@@ -1,6 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {dayColors, typeColors} from '../utils/colors';
+import TypeIcon from './TypeIcon';
 
 interface PayCardProps {
   list: string;
@@ -22,10 +23,11 @@ export default function PayCard({
   yen,
 }: PayCardProps) {
   return (
-    <View className="mb-4 py-2 px-4 rounded-lg shadow bg-white">
+    <View className="py-2 px-4 bg-white">
       <View>
-        <View>
-          <Text className="font-bold text-lg">{list}</Text>
+        <View className="flex-row space-x-4 items-center">
+          <TypeIcon type={type} />
+          <Text className="font-semibold text-lg">{list}</Text>
         </View>
         <View className="flex-row justify-between my-0.5">
           <Text className="text-sm text-gray-500">{date}</Text>
@@ -47,7 +49,7 @@ export default function PayCard({
             </Text>
           )}
           {yen !== 0 && (
-            <Text>
+            <Text className="font-semibold">
               {yen?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}엔
             </Text>
           )}
