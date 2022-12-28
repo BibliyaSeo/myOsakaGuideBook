@@ -1,16 +1,16 @@
 export const mainColor = '#f43f5e';
 
 export const dayColors = (day: string) => {
-  return day === 'Day 3'
-    ? 'bg-green-200'
-    : day === 'Day 5'
-    ? 'bg-red-200'
-    : day === 'Day 1'
+  return day === 'Day 1'
     ? 'bg-yellow-200'
     : day === 'Day 2'
     ? 'bg-blue-200'
+    : day === 'Day 3'
+    ? 'bg-green-200'
     : day === 'Day 4'
     ? 'bg-orange-200'
+    : day === 'Day 5'
+    ? 'bg-red-200'
     : day === 'Day 6'
     ? 'bg-pink-200'
     : 'bg-gray-200';
