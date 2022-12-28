@@ -23,7 +23,7 @@ export default function PayCard({
   yen,
 }: PayCardProps) {
   return (
-    <View className="py-2 px-4 bg-white">
+    <View className="py-2 px-4 bg-white mb-4">
       <View>
         <View className="flex-row space-x-4 items-center">
           <TypeIcon type={type} />

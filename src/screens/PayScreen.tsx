@@ -67,7 +67,7 @@ export default function PayScreen() {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <MainTitle title="OSAKA PAY" />
-      <ScrollView>
+      <ScrollView className="bg-gray-50">
         <View className="px-5 py-2">
           <Text className="font-bold text-xl mb-2">가계부</Text>
           {payData.map((item: any) => (
@@ -76,7 +76,7 @@ export default function PayScreen() {
               list={item.properties.list.title[0].plain_text}
               date={item.properties.date.date.start}
               day={item.properties.day.select.name}
-              memo={item.properties.memo.rich_text[0].plain_text}
+              memo={item.properties.memo.rich_text[0]?.plain_text}
               type={item.properties.type.select.name}
               won={item.properties.won.number}
               yen={item.properties.yen.number}

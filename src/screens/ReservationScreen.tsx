@@ -25,7 +25,7 @@ export default function ReservationScreen() {
           dateSort,
         );
         setReservationData(res.data.results);
-        console.log(res.data.results.map((item: any) => item.properties.name));
+        // console.log(res.data.results.map((item: any) => item.properties.name));
       } catch (error) {}
     };
     getReservationOsakaData();
@@ -34,16 +34,18 @@ export default function ReservationScreen() {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <MainTitle title="OSAKA RESERVATION" />
-      <ScrollView>
+      <ScrollView className="bg-gray-50">
         <View className="px-5 py-2">
           <Text className="font-bold text-xl mb-2">예약</Text>
           {reservationData.map((item: any) => (
             <ReservationCard
               key={item.id}
               name={item.properties.name?.title[0]?.plain_text}
+              english={item.properties?.english?.rich_text[0]?.plain_text}
               date={item.properties.date.date.start}
               memo={item.properties.memo.rich_text[0].plain_text}
               url={item.properties.url?.url}
+              url2={item.properties.url2?.url}
               reservationNumber={
                 item.properties.reservationNumber.rich_text[0].plain_text
               }

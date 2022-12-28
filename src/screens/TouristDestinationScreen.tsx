@@ -20,13 +20,17 @@ import {setDestinationData} from '../redux/slices/destinationSlice';
 import {RootState} from '../redux/store';
 import {useDispatch, useSelector} from 'react-redux';
 import Picker from '@ouroboros/react-native-picker';
+import {setRestaurantData} from '../redux/slices/restaurantSlice';
 
 export default function TouristDestinationScreen() {
   const dispatch = useDispatch();
   // const [destinationList, setDestinationList] = useState([]);
-  const [restaurantList, setRestaurantList] = useState([]);
+  // const [restaurantList, setRestaurantList] = useState([]);
   const destinationData = useSelector(
     (state: RootState) => state.destination.destinationData,
+  );
+  const restaurantData = useSelector(
+    (state: any) => state.restaurant.restaurantData,
   );
 
   const [selectedDay, setSelectedDay] = useState('all');
@@ -64,12 +68,15 @@ export default function TouristDestinationScreen() {
       const listArr = [getOsakaDestination, getOsakaRestaurant];
 
       await Promise.all(listArr).then(res => {
-        const properties = res[0].data.results.map(
+        const propertiesDest = res[0].data.results.map(
+          (item: any) => item.properties,
+        );
+        const propertiesRest = res[1].data.results.map(
           (item: any) => item.properties,
         );
         // setDestinationList(res[0].data.results);
-        dispatch(setDestinationData(properties));
-        setRestaurantList(res[1].data.results);
+        dispatch(setDestinationData(propertiesDest));
+        dispatch(setRestaurantData(propertiesRest));
       });
     };
     getMainData();
@@ -120,7 +127,7 @@ export default function TouristDestinationScreen() {
               ) : (
                 item.day.select?.name === selectedDay && (
                   <DestinationCard
-                    key={`${index}_destination`}
+                    key={item.id}
                     id={`${index}`}
                     name={item.name?.title[0]?.plain_text}
                     image={item.image?.rich_text[0]?.plain_text}
@@ -144,10 +151,13 @@ export default function TouristDestinationScreen() {
             horizontal
             contentContainerStyle={{paddingHorizontal: 15}}
             showsHorizontalScrollIndicator={false}>
-            {restaurantList.map((item: any) => (
+            {restaurantData.map((item: any, index: number) => (
               <RestaurantCard
                 key={item.id}
-                name={item.properties.name.title[0].plain_text}
+                id={`${index}`}
+                name={item.name.title[0].plain_text}
+                image={item.image?.rich_text[0]?.plain_text}
+                region={item.region.select?.name}
               />
             ))}
           </ScrollView>

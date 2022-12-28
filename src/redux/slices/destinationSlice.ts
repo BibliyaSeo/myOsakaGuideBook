@@ -38,7 +38,7 @@ interface RichTextDetail {
 
 interface RichText {
   id: string;
-  rich_text: RichText;
+  rich_text: RichTextDetail;
   type: string;
 }
 

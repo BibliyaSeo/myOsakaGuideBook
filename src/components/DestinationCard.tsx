@@ -21,13 +21,9 @@ export default function destinationCard({
   id,
   name,
   image,
-  description,
   region,
   day,
   pass,
-  worktime,
-  memo,
-  googleMap,
 }: IDestinationCard) {
   const navigation = useNavigation();
 

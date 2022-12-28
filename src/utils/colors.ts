@@ -1,4 +1,4 @@
-export const mainColor = '#07337c';
+export const mainColor = '#db2777';
 
 export const dayColors = (day: string) => {
   return day === 'Day 3'
@@ -18,6 +18,8 @@ export const dayColors = (day: string) => {
 
 export const typeColors = (type: string) => {
   return type === '교통'
+    ? 'bg-sky-200'
+    : type === '비행기'
     ? 'bg-sky-200'
     : type === '숙소'
     ? 'bg-lime-200'

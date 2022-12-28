@@ -28,7 +28,7 @@ export default function PlanScreen() {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <MainTitle title="OSAKA PLAN" />
-      <ScrollView>
+      <ScrollView className="bg-gray-50">
         <View className="px-5 py-2">
           <Text className="font-bold text-xl mb-2">일정</Text>
           {planData.map((item: any) => (

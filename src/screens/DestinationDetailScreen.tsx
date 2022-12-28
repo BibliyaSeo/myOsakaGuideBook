@@ -15,7 +15,7 @@ import {useBottomBarHeight} from '../hooks/useBottomBarHeight';
 import {destinationImages} from '../utils/destinationImages';
 import {dayColors, regionColors} from '../utils/colors';
 import {RootState} from '../redux/store';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 interface IDestiantionDetailScreen {
   params: IDestinationCard;
@@ -27,7 +27,7 @@ export default function DestinationDetailScreen() {
   }: IDestiantionDetailScreen = useRoute<any>();
 
   const navigation = useNavigation();
-  const dispatch = useDispatch();
+
   const destinationData = useSelector(
     (state: RootState) => state.destination.destinationData,
   );
@@ -124,7 +124,7 @@ export default function DestinationDetailScreen() {
             </View>
           </View>
           <View className="border-b h-2 border-gray-300"></View>
-          <View className="py-4">
+          <View className="pt-4 pb-2">
             <View className="mb-2">
               <Text>
                 영업시간: {eachDestination?.worktime?.rich_text[0]?.plain_text}
