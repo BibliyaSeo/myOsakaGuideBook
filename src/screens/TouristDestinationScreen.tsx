@@ -87,6 +87,10 @@ export default function TouristDestinationScreen() {
       <MainTitle title={'OSAKA GUIDEBOOK'} />
       <ScrollView>
         <View className="px-5 py-2">
+          {/* <View className="flex-row justify-between items-center">
+            <Text className="font-bold text-xl mb-2">오사카 날씨</Text>
+            <View></View>
+          </View> */}
           <View className="flex-row justify-between items-center">
             <Text className="font-bold text-xl mb-2">관광명소</Text>
             <Picker

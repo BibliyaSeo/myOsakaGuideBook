@@ -1,4 +1,4 @@
-export const mainColor = '#db2777';
+export const mainColor = '#f43f5e';
 
 export const dayColors = (day: string) => {
   return day === 'Day 3'
