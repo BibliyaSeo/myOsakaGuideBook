@@ -13,7 +13,8 @@ import {useSelector} from 'react-redux';
 import {useBottomBarHeight} from '../hooks/useBottomBarHeight';
 import {restaurantImages} from '../utils/restaurantImages';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {regionColors} from '../utils/colors';
+import {menuColors, regionColors} from '../utils/colors';
+import {fontSizeSetting} from '../utils/fontSetting';
 
 export default function RestaurantDetailScreen() {
   const {
@@ -29,6 +30,7 @@ export default function RestaurantDetailScreen() {
 
   const [eachRestaurant, setEachRestaurant] = useState<any>({});
   const [index, setIndex] = useState<any>();
+  const [fontSizePlus, setFontSizePlus] = useState(false);
   const last = restaurantData.length - 1;
 
   useEffect(() => {
@@ -72,9 +74,13 @@ export default function RestaurantDetailScreen() {
   return (
     <SafeAreaView className={`flex-1 bg-white pb-[${bottomBarHeight}px]`}>
       <View className="flex-row justify-between items-center py-1 px-2">
-        <View>
-          <Ionicons name={'close'} size={40} color={'transparent'} />
-        </View>
+        <TouchableOpacity onPress={() => setFontSizePlus(!fontSizePlus)}>
+          {fontSizePlus ? (
+            <Ionicons name={'remove'} size={40} color={'#eeeeee'} />
+          ) : (
+            <Ionicons name={'add'} size={40} color={'#eeeeee'} />
+          )}
+        </TouchableOpacity>
         <View>
           <Text className="text-xl font-bold">식당</Text>
         </View>
@@ -106,31 +112,43 @@ export default function RestaurantDetailScreen() {
               )} rounded-md w-14 flex-row justify-center`}>
               <Text>{eachRestaurant?.region?.select?.name}</Text>
             </View>
+            <View
+              className={`py-1.5 mb-2 rounded-md w-14 flex-row justify-center ${menuColors(
+                eachRestaurant?.menu?.select?.name,
+              )}`}>
+              <Text>{eachRestaurant?.menu?.select?.name}</Text>
+            </View>
           </View>
           <View className="border-b h-2 border-gray-300"></View>
           <View className="pt-4 pb-2">
             <View className="mb-2">
-              <Text>
+              <Text className={`${fontSizeSetting(fontSizePlus)}`}>
                 영업시간: {eachRestaurant?.worktime?.rich_text[0]?.plain_text}
               </Text>
             </View>
             <View className="mb-2">
-              <Text>
+              <Text className={`${fontSizeSetting(fontSizePlus)}`}>
                 평균 가격: {eachRestaurant?.price?.rich_text[0]?.plain_text}
               </Text>
             </View>
-            <Text>{eachRestaurant?.description?.rich_text[0]?.plain_text}</Text>
+            <Text className={`${fontSizeSetting(fontSizePlus)}`}>
+              {eachRestaurant?.description?.rich_text[0]?.plain_text}
+            </Text>
           </View>
           <View className="border-b h-2 border-gray-300"></View>
           <View className="py-2 mt-1.5">
-            <Text>메모: {eachRestaurant?.memo?.rich_text[0]?.plain_text}</Text>
+            <Text className={`${fontSizeSetting(fontSizePlus)}`}>
+              메모: {eachRestaurant?.memo?.rich_text[0]?.plain_text}
+            </Text>
           </View>
           <View className="border-t border-gray-300"></View>
           <View className="pt-2 flex-row items-center">
             <View className="flex justify-center mr-2">
               <TouchableOpacity
                 onPress={() => Linking.openURL(eachRestaurant?.googleMap?.url)}>
-                <Text>{eachRestaurant?.name?.title[0]?.plain_text} 구글맵</Text>
+                <Text className={`${fontSizeSetting(fontSizePlus)}`}>
+                  {eachRestaurant?.name?.title[0]?.plain_text} 구글맵
+                </Text>
               </TouchableOpacity>
             </View>
             <Ionicons name={'open-outline'} size={20} color={'gray'} />

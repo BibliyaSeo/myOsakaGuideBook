@@ -3,6 +3,7 @@ import React from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {ReservationCardProps} from '../components/ReservationCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useBottomBarHeight} from '../hooks/useBottomBarHeight';
 
 interface IReservationDetailScreen {
   params: ReservationCardProps;
@@ -12,24 +13,22 @@ export default function ReservationDetailScreen() {
     params: {name, english, date, memo, url, url2, reservationNumber, type},
   }: IReservationDetailScreen = useRoute<any>();
   const navigation = useNavigation();
-
-  console.log('url', url);
-  console.log(url2);
+  const bottomBarHeight = useBottomBarHeight;
 
   return (
-    <View className="p-5">
-      <View className="flex justify-between items-end py-1">
-        <TouchableOpacity onPress={() => navigation.navigate('예약')}>
-          <Ionicons name={'close'} size={40} color={'black'} />
-        </TouchableOpacity>
-      </View>
-      <View className="flex items-center">
-        <Text className="text-2xl font-bold">{name}</Text>
-        <Text className="text-lg">{english}</Text>
-      </View>
+    <View className={`pb-[${bottomBarHeight}px]`}>
+      <ScrollView className="px-5">
+        <View className="flex justify-between items-end py-1">
+          <TouchableOpacity onPress={() => navigation.navigate('예약')}>
+            <Ionicons name={'close'} size={40} color={'black'} />
+          </TouchableOpacity>
+        </View>
+        <View className="flex items-center">
+          <Text className="text-2xl font-bold">{name}</Text>
+          <Text className="text-lg">{english}</Text>
+        </View>
 
-      <ScrollView className="py-6">
-        <View className="border-b-0.5" />
+        <View className="border-b-0.5 pt-6" />
         <View className="flex-row justify-between pt-6 mb-3">
           <Text className="text-gray-600 text-[16px]">테마</Text>
           <Text className="text-[16px]">{type}</Text>

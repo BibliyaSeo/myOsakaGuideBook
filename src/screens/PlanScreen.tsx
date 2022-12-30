@@ -1,12 +1,20 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {NOTION_PLAN_DATABASE_ID} from '@env';
 import {api} from '../api';
 import MainTitle from '../components/MainTitle';
 import PlanCard from '../components/PlanCard';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function PlanScreen() {
   const [planData, setPlanData] = useState([]);
+  const [fontSizePlus, setFontSizePlus] = useState(false);
 
   const daySort = {
     sorts: [
@@ -30,7 +38,16 @@ export default function PlanScreen() {
       <MainTitle title="OSAKA PLAN" />
       <ScrollView className="bg-gray-50">
         <View className="px-5 py-2">
-          <Text className="font-bold text-xl mb-2">일정</Text>
+          <View className="mb-2 flex-row justify-between items-center">
+            <Text className="font-bold text-xl">일정</Text>
+            <TouchableOpacity onPress={() => setFontSizePlus(!fontSizePlus)}>
+              {fontSizePlus ? (
+                <Ionicons name={'remove'} size={30} color={'lightgray'} />
+              ) : (
+                <Ionicons name={'add'} size={30} color={'lightgray'} />
+              )}
+            </TouchableOpacity>
+          </View>
           {planData.map((item: any) => (
             <PlanCard
               key={item.id}
@@ -38,6 +55,7 @@ export default function PlanScreen() {
               title={item.properties.title.title[0].plain_text}
               day={item.properties.day.select.name}
               memo={item.properties.memo.rich_text[0].plain_text}
+              fontSizePlus={fontSizePlus}
             />
           ))}
         </View>

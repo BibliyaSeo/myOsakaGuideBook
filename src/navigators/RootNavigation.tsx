@@ -38,7 +38,7 @@ export default function RootNavigation() {
         name="ReservationDetail"
         component={ReservationDetailScreen}
         options={{
-          presentation: 'modal',
+          presentation: 'fullScreenModal',
         }}
       />
     </Stack.Navigator>

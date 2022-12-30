@@ -33,6 +33,12 @@ export default function TouristDestinationScreen() {
     (state: any) => state.restaurant.restaurantData,
   );
 
+  // console.log(
+  //   restaurantData?.map((item: any) =>
+  //     item.menu.multi_select.map((item2: any) => item2?.name),
+  //   ),
+  // );
+
   const [selectedDay, setSelectedDay] = useState('all');
 
   useEffect(() => {
@@ -87,8 +93,8 @@ export default function TouristDestinationScreen() {
       <MainTitle title={'OSAKA GUIDEBOOK'} />
       <ScrollView>
         <View className="px-5 py-2">
-          <View className="flex-row justify-between items-center">
-            <Text className="font-bold text-xl mb-2">관광명소</Text>
+          <View className="flex-row justify-between items-center mb-2">
+            <Text className="font-bold text-xl">관광명소</Text>
             <Picker
               onChanged={setSelectedDay}
               options={[
@@ -99,7 +105,7 @@ export default function TouristDestinationScreen() {
                 {value: 'Day 4', text: 'Day 4'},
                 {value: 'Day 5', text: 'Day 5'},
               ]}
-              style={{padding: 5}}
+              style={{padding: 5, fontSize: 10}}
               value={selectedDay}
             />
           </View>
@@ -158,6 +164,9 @@ export default function TouristDestinationScreen() {
                 name={item.name.title[0].plain_text}
                 image={item.image?.rich_text[0]?.plain_text}
                 region={item.region.select?.name}
+                menu={item.menu.select?.name}
+                // menu={item.region.select?.name}
+                // price={item.price?.rich_text[0]?.plain_text}
               />
             ))}
           </ScrollView>

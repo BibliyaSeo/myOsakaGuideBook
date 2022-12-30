@@ -8,6 +8,10 @@ export const destinationImages = [
     require: require('../assets/destinations/universal.jpg'),
   },
   {
+    name: 'soraniwa',
+    require: require('../assets/destinations/soraniwa.jpg'),
+  },
+  {
     name: 'naniwanoyu',
     require: require('../assets/destinations/naniwanoyu.jpg'),
   },
@@ -178,5 +182,9 @@ export const destinationImages = [
   {
     name: 'himeji',
     require: require('../assets/destinations/himeji.jpg'),
+  },
+  {
+    name: 'gitanotenmangu',
+    require: require('../assets/destinations/gitanotenmangu.jpg'),
   },
 ];

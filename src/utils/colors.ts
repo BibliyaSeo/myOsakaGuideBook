@@ -43,3 +43,11 @@ export const regionColors = (region: string) => {
     ? 'bg-green-200'
     : 'bg-white';
 };
+
+export const menuColors = (region: string) => {
+  return region === '라멘'
+    ? 'bg-yellow-200'
+    : region === '스시'
+    ? 'bg-pink-200'
+    : 'bg-gray-200';
+};

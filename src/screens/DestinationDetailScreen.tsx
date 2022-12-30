@@ -16,6 +16,7 @@ import {destinationImages} from '../utils/destinationImages';
 import {dayColors, regionColors} from '../utils/colors';
 import {RootState} from '../redux/store';
 import {useSelector} from 'react-redux';
+import {fontSizeSetting} from '../utils/fontSetting';
 
 interface IDestiantionDetailScreen {
   params: IDestinationCard;
@@ -36,6 +37,8 @@ export default function DestinationDetailScreen() {
   const [eachDestination, setEachDestination] = useState<any>({});
   const [index, setIndex] = useState<any>();
   const last = destinationData.length - 1;
+
+  const [fontSizePlus, setFontSizePlus] = useState(false);
 
   useEffect(() => {
     setIndex(Number(id));
@@ -78,9 +81,13 @@ export default function DestinationDetailScreen() {
   return (
     <SafeAreaView className={`flex-1 bg-white pb-[${bottomBarHeight}px]`}>
       <View className="flex-row justify-between items-center py-1 px-2">
-        <View>
-          <Ionicons name={'close'} size={40} color={'transparent'} />
-        </View>
+        <TouchableOpacity onPress={() => setFontSizePlus(!fontSizePlus)}>
+          {fontSizePlus ? (
+            <Ionicons name={'remove'} size={40} color={'#eeeeee'} />
+          ) : (
+            <Ionicons name={'add'} size={40} color={'#eeeeee'} />
+          )}
+        </TouchableOpacity>
         <View>
           <Text className="text-xl font-bold">관광명소</Text>
         </View>
@@ -126,17 +133,19 @@ export default function DestinationDetailScreen() {
           <View className="border-b h-2 border-gray-300"></View>
           <View className="pt-4 pb-2">
             <View className="mb-2">
-              <Text>
+              <Text className={`${fontSizeSetting(fontSizePlus)}`}>
                 영업시간: {eachDestination?.worktime?.rich_text[0]?.plain_text}
               </Text>
             </View>
-            <Text>
+            <Text className={`${fontSizeSetting(fontSizePlus)}`}>
               {eachDestination?.description?.rich_text[0]?.plain_text}
             </Text>
           </View>
           <View className="border-b h-2 border-gray-300"></View>
           <View className="py-2 mt-1.5">
-            <Text>메모: {eachDestination?.memo?.rich_text[0]?.plain_text}</Text>
+            <Text className={`${fontSizeSetting(fontSizePlus)}`}>
+              메모: {eachDestination?.memo?.rich_text[0]?.plain_text}
+            </Text>
           </View>
           <View className="border-t border-gray-300"></View>
           <View className="pt-2 flex-row items-center">
@@ -145,7 +154,7 @@ export default function DestinationDetailScreen() {
                 onPress={() =>
                   Linking.openURL(eachDestination?.googleMap?.url)
                 }>
-                <Text>
+                <Text className={`${fontSizeSetting(fontSizePlus)}`}>
                   {eachDestination?.name?.title[0]?.plain_text} 구글맵
                 </Text>
               </TouchableOpacity>

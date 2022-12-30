@@ -47,11 +47,11 @@ export default function destinationCard({
           <View
             className={`px-2 py-1.5 mb-2 ml-2 ${regionColors(
               region,
-            )} rounded-md w-14 flex-row justify-center`}>
+            )} rounded-md flex-row justify-center`}>
             <Text>{region}</Text>
           </View>
           <View
-            className={`px-2 py-1.5 mb-2 mx-2 rounded-md w-14 flex-row justify-center ${dayColors(
+            className={`px-2 py-1.5 mb-2 mx-2 rounded-md flex-row justify-center ${dayColors(
               day,
             )} `}>
             <Text>{day}</Text>
