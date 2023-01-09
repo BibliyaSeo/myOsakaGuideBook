@@ -17,7 +17,7 @@ export default function ReservationDetailScreen() {
 
   return (
     <View className={`pb-[${bottomBarHeight}px]`}>
-      <ScrollView className="px-5">
+      <ScrollView className="px-5 mb-2">
         <View className="flex justify-between items-end py-1">
           <TouchableOpacity onPress={() => navigation.navigate('예약')}>
             <Ionicons name={'close'} size={40} color={'black'} />
